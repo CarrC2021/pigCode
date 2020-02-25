@@ -38,4 +38,12 @@ public abstract class GameInfo implements Serializable {
         // GameInfo objects do not contain game information.
     }
 
+    public static String getTAG() {
+        return TAG;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
 }

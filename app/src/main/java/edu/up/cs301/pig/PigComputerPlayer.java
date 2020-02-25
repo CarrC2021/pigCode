@@ -36,7 +36,7 @@ public class PigComputerPlayer extends GameComputerPlayer {
             PigGameState state = (PigGameState)info;
             //if it is the computer's turn take action
             if (playerNum == state.getTurnID()){
-                if (new Random().nextInt(2) == 0){
+                if (new Random().nextBoolean()){
                     PigHoldAction action = new PigHoldAction(this);
                     this.game.sendAction(action);
                 }

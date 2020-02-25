@@ -52,11 +52,14 @@ public class PigLocalGame extends LocalGame {
             if (pigGameState.getDieValue() > 1) {
                 pigGameState.setRunningTotal(pigGameState.getRunningTotal() + pigGameState.getDieValue());
             }
-            else { pigGameState.setRunningTotal(0);}
+            else {
+                pigGameState.setRunningTotal(0);
+                pigGameState.setTurnID(1 - pigGameState.getTurnID());
+            }
             return true;
         }
         if (action instanceof PigHoldAction){
-            if(pigGameState.getTurnID() == 0){
+            if (pigGameState.getTurnID() == 0){
                 pigGameState.setPlayer0Score(pigGameState.getPlayer0Score() + pigGameState.getRunningTotal());
                 pigGameState.setTurnID(1);
             }
@@ -92,10 +95,10 @@ public class PigLocalGame extends LocalGame {
     protected String checkIfGameOver() {
         //TODO  You will implement this method
         if (pigGameState.getPlayer0Score() >= 50){
-            return "Player 0 has won. They won with a score of" + pigGameState.getPlayer1Score();
+            return "Player 0 has won, they won with a score of " + pigGameState.getPlayer0Score() + ". ";
         }
         if (pigGameState.getPlayer1Score() >= 50){
-            return "Player 1 has won. They won with a score of" + pigGameState.getPlayer1Score();
+            return "Player 1 has won, they won with a score of " + pigGameState.getPlayer1Score() + ". ";
         }
         return null;
     }
